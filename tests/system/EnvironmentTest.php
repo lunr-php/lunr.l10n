@@ -11,7 +11,6 @@
 namespace Lunr;
 
 use PHPUnit\Framework\TestCase;
-use ReflectionClass;
 
 /**
  * This class tests for a proper test environment.
