@@ -80,7 +80,7 @@ abstract class AbstractL10n
      */
     public function set_default_language($language)
     {
-        $current = setlocale(LC_MESSAGES, 0);
+        $current = setlocale(LC_MESSAGES, '0');
 
         if (setlocale(LC_MESSAGES, $language) !== FALSE)
         {
