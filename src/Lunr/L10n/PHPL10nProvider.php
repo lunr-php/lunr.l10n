@@ -121,20 +121,16 @@ class PHPL10nProvider extends L10nProvider
 
                 return $identifier;
             }
-            else
-            {
-                return $this->lang_array[$identifier];
-            }
+
+            return $this->lang_array[$identifier];
         }
 
         if (!is_array($this->lang_array[$identifier]) || !array_key_exists($context, $this->lang_array[$identifier]))
         {
             return $identifier;
         }
-        else
-        {
-            return $this->lang_array[$identifier][$context];
-        }
+
+        return $this->lang_array[$identifier][$context];
     }
 
     /**
@@ -200,10 +196,8 @@ class PHPL10nProvider extends L10nProvider
             {
                 return $this->lang_array[$singular][$plural][0];
             }
-            else
-            {
-                return $this->lang_array[$singular][$plural][1];
-            }
+
+            return $this->lang_array[$singular][$plural][1];
         }
 
         // Check whether we have the given context available
@@ -219,10 +213,8 @@ class PHPL10nProvider extends L10nProvider
         {
             return $this->lang_array[$singular][$plural][$context][0];
         }
-        else
-        {
-            return $this->lang_array[$singular][$plural][$context][1];
-        }
+
+        return $this->lang_array[$singular][$plural][$context][1];
     }
 
 }

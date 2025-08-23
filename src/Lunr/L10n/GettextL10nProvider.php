@@ -93,10 +93,8 @@ class GettextL10nProvider extends L10nProvider
         {
             return $identifier;
         }
-        else
-        {
-            return $output;
-        }
+
+        return $output;
     }
 
     /**
@@ -138,10 +136,8 @@ class GettextL10nProvider extends L10nProvider
         {
             return ($amount == 1 ? $singular : $plural);
         }
-        else
-        {
-            return $output;
-        }
+
+        return $output;
     }
 
 }
