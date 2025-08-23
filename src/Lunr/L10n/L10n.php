@@ -21,7 +21,7 @@ class L10n extends AbstractL10n
 
     /**
      * Static list of supported languages
-     * @var array|null
+     * @var string[]|null
      */
     private static $languages;
 
@@ -50,7 +50,7 @@ class L10n extends AbstractL10n
      * Storing the values in a static attribute ensures the
      * filesystem is never parsed more than once per request
      *
-     * @return array Supported languages
+     * @return string[] Supported languages
      */
     public function get_supported_languages()
     {

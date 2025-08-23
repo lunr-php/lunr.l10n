@@ -15,13 +15,18 @@ use Psr\Log\LoggerInterface;
 
 /**
  * PHP (array) Localization Provider class
+ *
+ * @phpstan-type Translation string
+ * @phpstan-type TranslationWithContext array <non-empty-string, string>
+ * @phpstan-type TranslationWithPlural array<non-empty-string, string[]>
+ * @phpstan-type TranslationWithPluralAndContext array<non-empty-string, array<non-empty-string, string[]>>
  */
 class PHPL10nProvider extends L10nProvider
 {
 
     /**
      * Attribute that stores the language array
-     * @var array
+     * @var array<non-empty-string, Translation|TranslationWithContext|TranslationWithPlural|TranslationWithPluralAndContext>
      */
     private $langArray;
 
