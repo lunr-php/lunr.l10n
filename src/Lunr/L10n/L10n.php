@@ -50,9 +50,24 @@ class L10n extends AbstractL10n
      * Storing the values in a static attribute ensures the
      * filesystem is never parsed more than once per request
      *
+     * @deprecated Use getSupportedLanguages() instead.
+     *
      * @return string[] Supported languages
      */
     public function get_supported_languages()
+    {
+        return $this->getSupportedLanguages();
+    }
+
+    /**
+     * Get list of supported languages from the filesystem.
+     *
+     * Storing the values in a static attribute ensures the
+     * filesystem is never parsed more than once per request
+     *
+     * @return string[] Supported languages
+     */
+    public function getSupportedLanguages(): array
     {
         if (self::$languages !== NULL)
         {
@@ -77,6 +92,8 @@ class L10n extends AbstractL10n
     /**
      * Convert a language (if supported) from ISO 639-1 to POSIX locale format.
      *
+     * @deprecated Use isoToPosix() instead.
+     *
      * @param string $language The language to convert on ISO 639-1 format
      *
      * @return string $locale The POSIX locale that has been deemed most
@@ -84,7 +101,20 @@ class L10n extends AbstractL10n
      */
     public function iso_to_posix($language)
     {
-        $supported = $this->get_supported_languages();
+        return $this->isoToPosix($language);
+    }
+
+    /**
+     * Convert a language (if supported) from ISO 639-1 to POSIX locale format.
+     *
+     * @param string $language The language to convert on ISO 639-1 format
+     *
+     * @return string $locale The POSIX locale that has been deemed most
+     *                          appropriate or the default if not found
+     */
+    public function isoToPosix(string $language): string
+    {
+        $supported = $this->getSupportedLanguages();
 
         foreach ($supported as $locale)
         {

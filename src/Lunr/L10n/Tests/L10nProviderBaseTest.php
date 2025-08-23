@@ -61,6 +61,16 @@ class L10nProviderBaseTest extends L10nProviderTestCase
      */
     public function testGetLanguageReturnsLanguage(): void
     {
+        $this->assertEquals(self::LANGUAGE, $this->class->getLanguage());
+    }
+
+    /**
+     * Test that get_language() returns the set language.
+     *
+     * @covers Lunr\L10n\L10nProvider::get_language
+     */
+    public function testDeprecatedGetLanguageReturnsLanguage(): void
+    {
         $this->assertEquals(self::LANGUAGE, $this->class->get_language());
     }
 

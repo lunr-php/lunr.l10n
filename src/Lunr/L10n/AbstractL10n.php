@@ -58,7 +58,7 @@ abstract class AbstractL10n
 
         $this->defaultLanguage = 'en_US';
 
-        $this->set_locales_location($localesLocation);
+        $this->setLocalesLocation($localesLocation);
     }
 
     /**
@@ -80,6 +80,18 @@ abstract class AbstractL10n
      */
     public function set_default_language($language)
     {
+        $this->setDefaultLanguage($language);
+    }
+
+    /**
+     * Set the default language.
+     *
+     * @param string $language POSIX locale definition
+     *
+     * @return void
+     */
+    public function setDefaultLanguage(string $language): void
+    {
         $current = setlocale(LC_MESSAGES, '0') ?: NULL;
 
         if (setlocale(LC_MESSAGES, $language) !== FALSE)
@@ -96,11 +108,25 @@ abstract class AbstractL10n
     /**
      * Set the location for language files.
      *
+     * @deprecated Use setLocalesLocation() instead
+     *
      * @param string $location Path to locale files
      *
      * @return void
      */
     public function set_locales_location($location)
+    {
+        $this->setLocalesLocation($location);
+    }
+
+    /**
+     * Set the location for language files.
+     *
+     * @param string $location Path to locale files
+     *
+     * @return void
+     */
+    public function setLocalesLocation(string $location): void
     {
         // This will throw if $location does not exist, isn't a directory
         // or we don't have permission to access it.
