@@ -63,10 +63,12 @@ class L10n extends AbstractL10n
 
         foreach ($this->locales_iterator as $file)
         {
-            if (!$file->isDot() && $file->isDir() && $this->locales_iterator->getFilename() != $this->default_language)
+            if ($file->isDot() || !$file->isDir() || $this->locales_iterator->getFilename() == $this->default_language)
             {
-                self::$languages[] = $this->locales_iterator->getFilename();
+                continue;
             }
+
+            self::$languages[] = $this->locales_iterator->getFilename();
         }
 
         return self::$languages;
