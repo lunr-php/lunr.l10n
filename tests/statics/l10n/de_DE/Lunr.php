@@ -17,4 +17,11 @@ $lang['%d egg']['food']               = '%d Ei';
 $lang['%d egg']['%d eggs']['food'][0] = '%d Ei';
 $lang['%d egg']['%d eggs']['food'][1] = '%d Eier';
 
+# Invalid
+
+$lang['%d cat']['%d cats'][0][0] = '%d Katze';
+$lang['%d cat']['%d cats'][0][1] = '%d Katzen';
+$lang['%d cat']['%d cats'][1][0] = '%d Katze';
+$lang['%d cat']['%d cats'][1][1] = '%d Katzen';
+
 ?>
