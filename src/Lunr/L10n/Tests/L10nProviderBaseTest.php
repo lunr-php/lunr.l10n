@@ -43,7 +43,7 @@ class L10nProviderBaseTest extends L10nProviderTestCase
      */
     public function testDefaultLanguageSetCorrectly(): void
     {
-        $this->assertPropertyEquals('default_language', 'en_US');
+        $this->assertPropertyEquals('defaultLanguage', 'en_US');
     }
 
     /**
@@ -51,7 +51,7 @@ class L10nProviderBaseTest extends L10nProviderTestCase
      */
     public function testLocaleLocationSetCorrectly(): void
     {
-        $this->assertPropertyEquals('locales_location', TEST_STATICS . '/l10n/');
+        $this->assertPropertyEquals('localesLocation', TEST_STATICS . '/l10n/');
     }
 
     /**

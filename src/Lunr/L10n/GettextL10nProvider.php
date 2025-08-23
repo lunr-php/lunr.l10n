@@ -28,14 +28,14 @@ class GettextL10nProvider extends L10nProvider
     /**
      * Constructor.
      *
-     * @param string          $language         POSIX locale definition
-     * @param string          $domain           Localization domain
-     * @param LoggerInterface $logger           Shared instance of a logger class
-     * @param string          $locales_location Location of translation files
+     * @param string          $language        POSIX locale definition
+     * @param string          $domain          Localization domain
+     * @param LoggerInterface $logger          Shared instance of a logger class
+     * @param string          $localesLocation Location of translation files
      */
-    public function __construct($language, $domain, $logger, $locales_location)
+    public function __construct($language, $domain, $logger, $localesLocation)
     {
-        parent::__construct($language, $domain, $logger, $locales_location);
+        parent::__construct($language, $domain, $logger, $localesLocation);
     }
 
     /**
@@ -56,7 +56,7 @@ class GettextL10nProvider extends L10nProvider
     protected function init($language)
     {
         setlocale(LC_MESSAGES, $language);
-        bindtextdomain($this->domain, $this->locales_location);
+        bindtextdomain($this->domain, $this->localesLocation);
         textdomain($this->domain);
     }
 
@@ -89,7 +89,7 @@ class GettextL10nProvider extends L10nProvider
         $composed = "{$context}\004{$identifier}";
         $output   = dcgettext($this->domain, $composed, LC_MESSAGES);
 
-        if (($output == $composed) && ($this->language != $this->default_language))
+        if (($output == $composed) && ($this->language != $this->defaultLanguage))
         {
             return $identifier;
         }
@@ -131,7 +131,7 @@ class GettextL10nProvider extends L10nProvider
         $output   = dcngettext($this->domain, $composed, $plural, $amount, LC_MESSAGES);
 
         if ((($output == $composed) || ($output == $plural))
-            && ($this->language != $this->default_language)
+            && ($this->language != $this->defaultLanguage)
         )
         {
             return ($amount == 1 ? $singular : $plural);

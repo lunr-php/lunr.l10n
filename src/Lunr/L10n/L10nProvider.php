@@ -36,14 +36,14 @@ abstract class L10nProvider extends AbstractL10n
     /**
      * Constructor.
      *
-     * @param string          $language         POSIX locale definition
-     * @param string          $domain           Localization domain
-     * @param LoggerInterface $logger           Shared instance of a logger class
-     * @param string          $locales_location Location of translation files
+     * @param string          $language        POSIX locale definition
+     * @param string          $domain          Localization domain
+     * @param LoggerInterface $logger          Shared instance of a logger class
+     * @param string          $localesLocation Location of translation files
      */
-    public function __construct($language, $domain, $logger, $locales_location)
+    public function __construct($language, $domain, $logger, $localesLocation)
     {
-        parent::__construct($logger, $locales_location);
+        parent::__construct($logger, $localesLocation);
 
         $this->language = $language;
         $this->domain   = $domain;

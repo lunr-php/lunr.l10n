@@ -24,7 +24,7 @@ class PHPL10nProviderBaseTest extends PHPL10nProviderTestCase
      */
     public function testLangArrayIsEmptyByDefault(): void
     {
-        $this->assertArrayEmpty($this->getReflectionPropertyValue('lang_array'));
+        $this->assertArrayEmpty($this->getReflectionPropertyValue('langArray'));
     }
 
     /**
@@ -62,7 +62,7 @@ class PHPL10nProviderBaseTest extends PHPL10nProviderTestCase
 
         $method->invokeArgs($this->class, [ self::LANGUAGE ]);
 
-        $property = $this->getReflectionPropertyValue('lang_array');
+        $property = $this->getReflectionPropertyValue('langArray');
 
         $this->assertIsArray($property);
         $this->assertNotEmpty($property);
@@ -80,7 +80,7 @@ class PHPL10nProviderBaseTest extends PHPL10nProviderTestCase
 
         $method->invokeArgs($this->class, [ 'en_US' ]);
 
-        $this->assertArrayEmpty($this->getReflectionPropertyValue('lang_array'));
+        $this->assertArrayEmpty($this->getReflectionPropertyValue('langArray'));
     }
 
     /**
@@ -91,7 +91,7 @@ class PHPL10nProviderBaseTest extends PHPL10nProviderTestCase
      */
     public function testInitForDefaultLanguageDoesNotRepopulate(): void
     {
-        $property = $this->getReflectionProperty('lang_array');
+        $property = $this->getReflectionProperty('langArray');
 
         $method = $this->getReflectionMethod('init');
 

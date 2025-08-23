@@ -26,19 +26,19 @@ abstract class AbstractL10n
      * Default language.
      * @var string
      */
-    protected $default_language;
+    protected $defaultLanguage;
 
     /**
      * Locales location.
      * @var string
      */
-    protected string $locales_location;
+    protected string $localesLocation;
 
     /**
      * Locales location iterator.
      * @var DirectoryIterator
      */
-    protected DirectoryIterator $locales_iterator;
+    protected DirectoryIterator $localesIterator;
 
     /**
      * Shared instance of a Logger class.
@@ -49,16 +49,16 @@ abstract class AbstractL10n
     /**
      * Constructor.
      *
-     * @param LoggerInterface $logger           Shared instance of a Logger class.
-     * @param string          $locales_location Location of translation files
+     * @param LoggerInterface $logger          Shared instance of a Logger class.
+     * @param string          $localesLocation Location of translation files
      */
-    public function __construct($logger, $locales_location)
+    public function __construct($logger, $localesLocation)
     {
         $this->logger = $logger;
 
-        $this->default_language = 'en_US';
+        $this->defaultLanguage = 'en_US';
 
-        $this->set_locales_location($locales_location);
+        $this->set_locales_location($localesLocation);
     }
 
     /**
@@ -67,8 +67,8 @@ abstract class AbstractL10n
     public function __destruct()
     {
         unset($this->logger);
-        unset($this->default_language);
-        unset($this->locales_location);
+        unset($this->defaultLanguage);
+        unset($this->localesLocation);
     }
 
     /**
@@ -84,7 +84,7 @@ abstract class AbstractL10n
 
         if (setlocale(LC_MESSAGES, $language) !== FALSE)
         {
-            $this->default_language = $language;
+            $this->defaultLanguage = $language;
             setlocale(LC_MESSAGES, $current);
         }
         else
@@ -104,9 +104,9 @@ abstract class AbstractL10n
     {
         // This will throw if $location does not exist, isn't a directory
         // or we don't have permission to access it.
-        $this->locales_iterator = new DirectoryIterator($location);
+        $this->localesIterator = new DirectoryIterator($location);
 
-        $this->locales_location = $location;
+        $this->localesLocation = $location;
     }
 
 }

@@ -28,7 +28,7 @@ class AbstractL10nBaseTest extends AbstractL10nTestCase
      */
     public function testDefaultLanguageSetCorrectly(): void
     {
-        $this->assertPropertyEquals('default_language', 'en_US');
+        $this->assertPropertyEquals('defaultLanguage', 'en_US');
     }
 
     /**
@@ -36,7 +36,7 @@ class AbstractL10nBaseTest extends AbstractL10nTestCase
      */
     public function testLocaleLocationSetCorrectly(): void
     {
-        $this->assertPropertyEquals('locales_location', TEST_STATICS . '/l10n/');
+        $this->assertPropertyEquals('localesLocation', TEST_STATICS . '/l10n/');
     }
 
     /**
@@ -48,7 +48,7 @@ class AbstractL10nBaseTest extends AbstractL10nTestCase
     {
         $this->class->set_default_language(self::LANGUAGE);
 
-        $this->assertPropertyEquals('default_language', self::LANGUAGE);
+        $this->assertPropertyEquals('defaultLanguage', self::LANGUAGE);
     }
 
     /**
@@ -64,7 +64,7 @@ class AbstractL10nBaseTest extends AbstractL10nTestCase
 
         $this->class->set_default_language('Whatever');
 
-        $this->assertEquals('en_US', $this->getReflectionPropertyValue('default_language'));
+        $this->assertEquals('en_US', $this->getReflectionPropertyValue('defaultLanguage'));
     }
 
     /**
@@ -110,7 +110,7 @@ class AbstractL10nBaseTest extends AbstractL10nTestCase
 
         $this->class->set_locales_location($location);
 
-        $this->assertPropertyEquals('locales_location', $location);
+        $this->assertPropertyEquals('localesLocation', $location);
     }
 
     /**
@@ -131,7 +131,7 @@ class AbstractL10nBaseTest extends AbstractL10nTestCase
         }
         catch (Throwable $e)
         {
-            $this->assertEquals(TEST_STATICS . '/l10n/', $this->getReflectionPropertyValue('locales_location'));
+            $this->assertEquals(TEST_STATICS . '/l10n/', $this->getReflectionPropertyValue('localesLocation'));
 
             throw $e;
         }

@@ -51,13 +51,13 @@ abstract class GettextL10nProviderTestCase extends LunrBaseTestCase
      * Base locale value.
      * @var string
      */
-    private $base_locale;
+    private $baseLocale;
 
     /**
      * Base domain value.
      * @var string
      */
-    private $base_domain;
+    private $baseDomain;
 
     /**
      * TestCase Constructor.
@@ -66,8 +66,8 @@ abstract class GettextL10nProviderTestCase extends LunrBaseTestCase
     {
         $this->logger = $this->getMockBuilder('Psr\Log\LoggerInterface')->getMock();
 
-        $this->base_locale = setlocale(LC_MESSAGES, 0);
-        $this->base_domain = textdomain(NULL);
+        $this->baseLocale = setlocale(LC_MESSAGES, 0);
+        $this->baseDomain = textdomain(NULL);
 
         $this->class = new GettextL10nProvider(self::LANGUAGE, self::DOMAIN, $this->logger, TEST_STATICS . '/l10n/');
         $this->class->set_default_language('nl_NL');
@@ -81,13 +81,13 @@ abstract class GettextL10nProviderTestCase extends LunrBaseTestCase
      */
     public function tearDown(): void
     {
-        setlocale(LC_MESSAGES, $this->base_locale);
-        textdomain($this->base_domain);
+        setlocale(LC_MESSAGES, $this->baseLocale);
+        textdomain($this->baseDomain);
 
         unset($this->class);
         unset($this->logger);
-        unset($this->base_locale);
-        unset($this->base_domain);
+        unset($this->baseLocale);
+        unset($this->baseDomain);
 
         parent::tearDown();
     }

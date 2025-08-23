@@ -28,12 +28,12 @@ class L10n extends AbstractL10n
     /**
      * Constructor.
      *
-     * @param LoggerInterface $logger           Shared instance of a Logger class.
-     * @param string          $locales_location Location of translation files
+     * @param LoggerInterface $logger          Shared instance of a Logger class.
+     * @param string          $localesLocation Location of translation files
      */
-    public function __construct($logger, $locales_location)
+    public function __construct($logger, $localesLocation)
     {
-        parent::__construct($logger, $locales_location);
+        parent::__construct($logger, $localesLocation);
     }
 
     /**
@@ -59,16 +59,16 @@ class L10n extends AbstractL10n
             return self::$languages;
         }
 
-        self::$languages = [ $this->default_language ];
+        self::$languages = [ $this->defaultLanguage ];
 
-        foreach ($this->locales_iterator as $file)
+        foreach ($this->localesIterator as $file)
         {
-            if ($file->isDot() || !$file->isDir() || $this->locales_iterator->getFilename() == $this->default_language)
+            if ($file->isDot() || !$file->isDir() || $this->localesIterator->getFilename() == $this->defaultLanguage)
             {
                 continue;
             }
 
-            self::$languages[] = $this->locales_iterator->getFilename();
+            self::$languages[] = $this->localesIterator->getFilename();
         }
 
         return self::$languages;
@@ -94,7 +94,7 @@ class L10n extends AbstractL10n
             }
         }
 
-        return $this->default_language;
+        return $this->defaultLanguage;
     }
 
 }
