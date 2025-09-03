@@ -113,7 +113,7 @@ class PHPL10nProvider extends L10nProvider
             {
                 foreach ($this->langArray[$identifier] as $value)
                 {
-                    if (is_array($value) && isset($value[0]))
+                    if (is_array($value) && isset($value[0]) && !is_array($value[0]))
                     {
                         return $value[0];
                     }
@@ -126,6 +126,11 @@ class PHPL10nProvider extends L10nProvider
         }
 
         if (!is_array($this->langArray[$identifier]) || !array_key_exists($context, $this->langArray[$identifier]))
+        {
+            return $identifier;
+        }
+
+        if (is_array($this->langArray[$identifier][$context]))
         {
             return $identifier;
         }
@@ -194,10 +199,20 @@ class PHPL10nProvider extends L10nProvider
 
             if ($amount == 1)
             {
-                return $this->langArray[$singular][$plural][0];
+                if (!is_array($this->langArray[$singular][$plural][0]))
+                {
+                    return $this->langArray[$singular][$plural][0];
+                }
+
+                return $singular;
             }
 
-            return $this->langArray[$singular][$plural][1];
+            if (!is_array($this->langArray[$singular][$plural][1]))
+            {
+                return $this->langArray[$singular][$plural][1];
+            }
+
+            return $plural;
         }
 
         // Check whether we have the given context available

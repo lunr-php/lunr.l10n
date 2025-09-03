@@ -126,6 +126,28 @@ class PHPL10nProviderLangTest extends PHPL10nProviderTestCase
         $this->assertEquals('%d eggs', $this->class->lang('%d eggs', 'food'));
     }
 
+    /**
+     * Test lang() accessing a plural value with singular.
+     *
+     * @depends Lunr\L10n\Tests\PHPL10nProviderBaseTest::testInitForNonDefaultLanguageSetsLangArray
+     * @covers  Lunr\L10n\PHPL10nProvider::lang
+     */
+    public function testLangAccessingPluralAsSingularReturnsIdentifier(): void
+    {
+        $this->assertEquals('%d egg', $this->class->lang('%d egg', '%d eggs'));
+    }
+
+    /**
+     * Test lang() accessing a singular value with invalid context defined.
+     *
+     * @depends Lunr\L10n\Tests\PHPL10nProviderBaseTest::testInitForNonDefaultLanguageSetsLangArray
+     * @covers  Lunr\L10n\PHPL10nProvider::lang
+     */
+    public function testLangAccessingPluralWithInvalidContextReturnsIdentifier(): void
+    {
+        $this->assertEquals('%d cat', $this->class->lang('%d cat'));
+    }
+
 }
 
 ?>

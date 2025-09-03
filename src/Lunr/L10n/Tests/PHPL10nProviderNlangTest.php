@@ -201,6 +201,28 @@ class PHPL10nProviderNlangTest extends PHPL10nProviderTestCase
         $this->assertEquals('Bank', $this->class->nlang('bank', 'banks', 2, 'finance'));
     }
 
+    /**
+     * Test nlang() with invalid context returns singular.
+     *
+     * @depends Lunr\L10n\Tests\PHPL10nProviderBaseTest::testInitForNonDefaultLanguageSetsLangArray
+     * @covers  Lunr\L10n\PHPL10nProvider::nlang
+     */
+    public function testNlangSingularWithInvalidContextReturnsSingular(): void
+    {
+        $this->assertEquals('%d cat', $this->class->nlang('%d cat', '%d cats', 1));
+    }
+
+    /**
+     * Test nlang() with invalid context returns plural.
+     *
+     * @depends Lunr\L10n\Tests\PHPL10nProviderBaseTest::testInitForNonDefaultLanguageSetsLangArray
+     * @covers  Lunr\L10n\PHPL10nProvider::nlang
+     */
+    public function testNlangPluralWithInvalidContextReturnsPlural(): void
+    {
+        $this->assertEquals('%d cats', $this->class->nlang('%d cat', '%d cats', 2));
+    }
+
 }
 
 ?>
