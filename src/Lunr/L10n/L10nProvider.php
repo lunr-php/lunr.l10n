@@ -72,9 +72,21 @@ abstract class L10nProvider extends AbstractL10n
     /**
      * Get the language the provider has been initialized with.
      *
+     * @deprecated Use getLanguage() instead
+     *
      * @return string $string Provider language
      */
     public function get_language()
+    {
+        return $this->getLanguage();
+    }
+
+    /**
+     * Get the language the provider has been initialized with.
+     *
+     * @return string $string Provider language
+     */
+    public function getLanguage(): string
     {
         return $this->language;
     }
