@@ -70,7 +70,7 @@ abstract class L10nTestCase extends LunrBaseTestCase
      *
      * @return array $languages Array of supported languages
      */
-    public function supportedLanguagesProvider(): array
+    public static function supportedLanguagesProvider(): array
     {
         $languages   = [];
         $languages[] = [ 'en', 'en_US' ];
@@ -84,7 +84,7 @@ abstract class L10nTestCase extends LunrBaseTestCase
      *
      * @return array $languages Array of unsupported languages
      */
-    public function unsupportedLanguagesProvider(): array
+    public static function unsupportedLanguagesProvider(): array
     {
         $languages   = [];
         $languages[] = [ 'fr', 'fr_FR' ];
